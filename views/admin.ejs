@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title || 'Admin Dashboard' %></title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #23086f;
+    }
+    header {
+      background-color: #444;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #666;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    main {
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h2 {
+      color: #d84315;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background-color: #d84315;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    .btn {
+      background-color: #23086f;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      margin: 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .btn:hover {
+      background-color: #1a0654;
+    }
+    footer {
+      background-color: #444;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Dashboard</h1>
+</header>
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/admin/dashboard">Dashboard</a>
+  <a href="/booking">Bookings</a>
+  <a href="/auth/logout">Logout</a>
+</nav>
+
+<main>
+  <h2>Class Schedule Management</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Class Name</th>
+        <th>Time</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monday</td>
+        <td>Striking Class</td>
+        <td>18:00</td>
+        <td>
+          <button class="btn">Edit</button>
+          <button class="btn">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td>Grappling Class</td>
+        <td>18:00</td>
+        <td>
+          <button class="btn">Edit</button>
+          <button class="btn">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td>Mixed Martial Arts</td>
+        <td>18:00</td>
+        <td>
+          <button class="btn">Edit</button>
+          <button class="btn">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top: 50px;">Recent Registrations</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Class</th>
+        <th>Registered On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (bookings && bookings.length > 0) { %>
+        <% bookings.forEach(booking => { %>
+          <tr>
+            <td><%= booking.name %></td>
+            <td>Phone: <%= booking.phone %></td>
+            <td><%= booking.class_day %></td>
+            <td><%= booking.class_date ? new Date(booking.class_date).toISOString().split('T')[0] : 'N/A' %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="3" style="text-align:center;">No registrations found</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</main>
+
+<footer>
+  <p>&copy; <%= new Date().getFullYear() %> Bushido Martial Arts School - Admin Panel</p>
+</footer>
+
+</body>
+</html>

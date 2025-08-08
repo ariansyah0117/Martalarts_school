@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    /* Styling for the main section */
+    main {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #23086f;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    /* Small heading with dark red color */
+    .highlight-title {
+      font-size: 2em;
+      font-weight: bold;
+      color: #d84315;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    /* Instructor image section */
+    .instructor-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .instructor-section h3 {
+      color: #d84315;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    /* Set instructor image width to 80% of original */
+    .instructor-image {
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Navbar link text color to white */
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<header style="background-color: #444; color: white; padding: 20px; text-align: center;">
+  <h1><%= title %></h1>
+  <%- include('partials/navbar.ejs') %>
+</header>
+
+<main>
+  <div class="highlight-title">Bushido Martial Art</div>
+  <h2>Discover Strength, Discipline, and Community</h2>
+  <p>
+    Welcome to Bushido Martial Arts School. Whether you're a beginner or an experienced fighter, 
+    we have something for everyone. Join us to learn, grow, and challenge yourself.
+  </p>
+  <p>
+    Our programs are designed for both children and adults, helping students build confidence, improve health, and develop discipline. 
+    Through structured training, students gain physical strength and mental resilience while learning the true spirit of martial arts.
+  </p>
+  <p>
+    The school is led by our Head Instructor, a highly experienced martial artist with over 30 years of training and teaching. 
+    He holds a black belt in five martial arts — Karate, Japanese Jiujitsu, Shorinji Kempo, Hapkido (Korean Federation), and World Martial Arts Hapkido — 
+    as well as a brown belt in Judo. With deep knowledge and passion, he is committed to guiding each student on their martial arts journey.
+  </p>
+
+  <!-- Instructor Image Section -->
+  <div class="instructor-section">
+    <h3>Instructor</h3>
+    <img src="/images/instructor.jpeg" alt="Instructor Photo" class="instructor-image" />
+  </div>
+</main>
+
+<footer style="background-color: #444; color: white; text-align: center; padding: 15px;">
+  <p>&copy; <%= new Date().getFullYear() %> Bushido Martial Arts School</p>
+  <p>
+    Sunnynook Community Center, Sunnynook, Forrest Hill, Auckland<br>
+    Phone: 021 579 574<br>
+    Email: <a href="mailto:ari1701@yahoo.com" style="color: #ffffff; text-decoration: underline;">ari1701@yahoo.com</a>
+  </p>
+</footer>
+</body>
+</html>

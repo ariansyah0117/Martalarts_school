@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #23086f;
+    }
+
+    header {
+      background-color: #444;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #666;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h2 {
+      color: #d84315;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #ffffff;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #d84315;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .day-label {
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #004d40;
+    }
+
+    .martial-section {
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .martial-section img {
+      width: 600px;
+      height: 375px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #444;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><%= title %></h1>
+  <%- include('partials/navbar.ejs') %>
+</header>
+
+<main>
+  <h2>Class Schedule</h2>
+  <p>Here is our weekly class schedule. We focus on practical martial arts training through three specialized sessions each week.</p>
+
+  <ul>
+    <li><span class="day-label">Monday</span><br>
+      <strong>Striking Class</strong> (Karate, Hapkido, Shorinji Kempo) – 6:00 PM
+    </li>
+    <li><span class="day-label">Wednesday</span><br>
+      <strong>Grappling Class</strong> (Judo, Japanese Jiujitsu) – 6:00 PM
+    </li>
+    <li><span class="day-label">Friday</span><br>
+      <strong>Mixed Martial Arts Class</strong> (Combination of Striking & Grappling) – 6:00 PM
+    </li>
+  </ul>
+
+  <!-- Martial Arts Descriptions -->
+
+  <div class="martial-section">
+    <h3>Karate (Striking Arts)</h3>
+    <p>Karate is a traditional martial art originating from Okinawa, Japan. It developed from indigenous fighting methods combined with Chinese martial arts, forming a system focused on striking techniques.</p>
+    <p>The art emphasizes punches, kicks, knee strikes, and open-hand techniques. Practitioners learn forms (kata), basic drills (kihon), and sparring (kumite) to develop power and control.</p>
+    <p>Karate promotes discipline, respect, and perseverance. Its philosophy centers around self-improvement, mental focus, and peaceful resolution of conflict whenever possible.</p>
+    <img src="/images/karate.jpeg" alt="Karate Class" />
+  </div>
+
+  <div class="martial-section">
+    <h3>Japanese Jiujitsu (Grappling Arts)</h3>
+    <p>Japanese Jiujitsu is a classical martial art from feudal Japan, originally developed by samurai to fight armed and armored opponents when weapons were not available.</p>
+    <p>It focuses on joint locks, throws, pins, and defensive counters using an opponent's energy and force. Jiujitsu teaches practitioners how to control and neutralize threats efficiently.</p>
+    <p>The philosophy of Jiujitsu emphasizes adaptability, strategy, and maintaining calm under pressure. It cultivates both mental flexibility and physical resilience.</p>
+    <img src="/images/jiujitsu.jpeg" alt="Japanese Jiujitsu" />
+  </div>
+
+  <div class="martial-section">
+    <h3>Shorinji Kempo (Striking Arts)</h3>
+    <p>Shorinji Kempo was founded in Japan in 1947 by Doshin So, combining elements of Shaolin Kung Fu with Japanese martial traditions. It is a modern system of both self-defense and character development.</p>
+    <p>Techniques include strikes, joint locks, throws, and pressure point applications. It is taught as both a physical discipline and a philosophical study.</p>
+    <p>Its core philosophy centers on mutual respect, cooperation, and building a peaceful society through strong individuals. The motto is: "Half for one's own happiness, and half for the happiness of others."</p>
+    <img src="/images/shorinji kempo1.jpeg" alt="Shorinji Kempo" />
+  </div>
+
+  <div class="martial-section">
+    <h3>Hapkido (Striking Arts)</h3>
+    <p>Hapkido is a Korean martial art developed in the mid-20th century, blending traditional Korean techniques with Japanese Daito-Ryu Aiki-jujutsu and other influences.</p>
+    <p>It includes kicks, joint locks, throws, pressure point strikes, and weapon training. Unlike hard-style arts, Hapkido emphasizes circular motion and redirection of force.</p>
+    <p>The philosophy of Hapkido promotes harmony, non-resistance, and balance. It teaches that true strength lies in flexibility and awareness, both physically and mentally.</p>
+    <img src="/images/hapkido.jpeg" alt="Hapkido Class" />
+  </div>
+
+  <div class="martial-section">
+    <h3>Judo (Grappling Arts)</h3>
+    <p>Judo, meaning "the gentle way", was founded in Japan by Jigoro Kano in 1882. It evolved from traditional Japanese jujutsu systems into a modern Olympic sport.</p>
+    <p>It focuses on throwing techniques, pins, and submissions such as arm locks and chokes. Judokas learn to use leverage and timing rather than brute strength.</p>
+    <p>Judo's philosophy encourages mutual welfare and benefit. Practitioners strive for efficient movement and continuous self-improvement through rigorous practice and humility.</p>
+    <img src="/images/judo1.jpeg" alt="Judo Class" />
+  </div>
+
+  <div class="martial-section">
+    <h3>Mixed Martial Arts (Striking & Grappling)</h3>
+    <p>Our Mixed Martial Arts (MMA) class combines effective techniques from both striking and grappling disciplines. Students will learn how to transition smoothly between stand-up combat and ground fighting.</p>
+    <p>The class incorporates elements of Karate, Hapkido, Shorinji Kempo, Judo, and Jiujitsu to provide a well-rounded self-defense system and competitive foundation.</p>
+    <p>Training includes striking combos, takedowns, clinch work, submissions, and practical sparring. This class is perfect for those who want a comprehensive and modern martial arts experience.</p>
+    <img src="/images/mma1.jpeg" alt="Mixed Martial Arts Class" />
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; <%= new Date().getFullYear() %> Bushido Martial Arts School</p>
+  <p>
+    Sunnynook Community Center, Sunnynook, Forrest Hill, Auckland<br>
+    Phone: 021 579 574<br>
+    Email: <a href="mailto:ari1701@yahoo.com" style="color: #ffffff; text-decoration: underline;">ari1701@yahoo.com</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<nav>
+  <a href="/">Home</a>
+  <a href="/schedule">Schedule</a>
+  <a href="/contact">Contact</a>
+
+  <% if (user) { %>
+    <% if (user.role === 'instructor') { %>
+      <a href="/instructor/dashboard">Instructor Dashboard</a>
+    <% } %>
+
+    <% if (user.role === 'admin') { %>
+      <a href="/admin/dashboard">Admin Dashboard</a>
+    <% } %>
+
+    <!-- Booking link visible for all logged-in users -->
+    <a href="/booking">Booking</a>
+
+    <a href="/auth/logout">Logout</a>
+  <% } else { %>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/register">Register</a>
+  <% } %>
+</nav>

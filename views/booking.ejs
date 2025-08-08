@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #23086f;
+    }
+
+    header {
+      background-color: #444;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #666;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 30px;
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #d84315;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #ec0909;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a0654;
+    }
+
+    .success-message {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      padding: 15px;
+      border: 1px solid #a5d6a7;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #444;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><%= title %></h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/booking">Booking</a>
+    <a href="/admin/dashboard">Admin Dashboard</a>
+    <a href="/auth/logout">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Book a Class</h2>
+
+  <% if (success) { %>
+    <div class="success-message">
+      <p><strong>Thank you for your booking!</strong></p>
+      <p>We received your request for <strong><%= class_day %></strong> on <strong><%= class_date %></strong>.</p>
+      <p>We will contact you shortly.</p>
+    </div>
+  <% } else { %>
+    <form action="/booking" method="POST" onsubmit="return validateForm()">
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Mobile or landline" required value="<%= formData ? formData.phone : '' %>" />
+
+      <label for="class_day">Select Class Day</label>
+      <select id="class_day" name="class_day" required>
+        <option value="">-- Choose a Day --</option>
+        <option value="Monday" <%= formData && formData.class_day === 'Monday' ? 'selected' : '' %>>Monday – Striking Class</option>
+        <option value="Wednesday" <%= formData && formData.class_day === 'Wednesday' ? 'selected' : '' %>>Wednesday – Grappling Class</option>
+        <option value="Friday" <%= formData && formData.class_day === 'Friday' ? 'selected' : '' %>>Friday – Mixed Martial Arts</option>
+      </select>
+
+      <label for="class_date">Preferred Class Date</label>
+      <input type="date" id="class_date" name="class_date" required value="<%= formData ? formData.class_date : '' %>" />
+
+      <button type="submit">Submit Booking</button>
+    </form>
+  <% } %>
+</main>
+
+<footer>
+  <p>&copy; <%= new Date().getFullYear() %> Bushido Martial Arts School</p>
+</footer>
+
+<script>
+  function validateForm() {
+    const phone = document.getElementById('phone').value.trim();
+    const class_day = document.getElementById('class_day').value;
+    const class_date = document.getElementById('class_date').value;
+
+    if (!phone || !class_day || !class_date) {
+      alert('Please complete all fields.');
+      return false;
+    }
+
+    const today = new Date().toISOString().split('T')[0];
+    if (class_date < today) {
+      alert('Please choose a valid future date.');
+      return false;
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>

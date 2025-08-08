@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    main {
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #23086f;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .highlight-title {
+      font-size: 2em;
+      font-weight: bold;
+      color: #d84315;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    .dashboard-section {
+      margin-top: 30px;
+    }
+
+    .dashboard-section h3 {
+      font-size: 1.5em;
+      color: #d84315;
+      margin-bottom: 10px;
+    }
+
+    .class-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .class-list li {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background-color: #f8f8f8;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header style="background-color: #444; color: white; padding: 20px; text-align: center;">
+    <h1><%= title %></h1>
+    <%- include('partials/navbar.ejs') %>
+  </header>
+
+  <main>
+    <div class="highlight-title">Welcome, <%= user.name %>!</div>
+
+    <div class="dashboard-section">
+      <h3>Your Classes</h3>
+      <% if (!classes || classes.length === 0) { %>
+        <p>You have no classes assigned yet.</p>
+      <% } else { %>
+        <ul class="class-list">
+          <% classes.forEach(cls => { %>
+            <li>
+              <strong><%= cls.title %></strong><br/>
+              <span><%= cls.day %> at <%= cls.time %></span>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </div>
+
+    <% if (user.role === 'instructor') { %>
+    <div class="dashboard-section">
+      <h3>Instructor Tools</h3>
+      <p><a href="#">➕ Add New Class</a> | <a href="#">👥 Manage Students</a></p>
+    </div>
+    <% } %>
+  </main>
+
+  <footer style="background-color: #444; color: white; text-align: center; padding: 15px;">
+    <p>&copy; <%= new Date().getFullYear() %> Bushido Martial Arts School</p>
+    <p>
+      Sunnynook Community Center, Sunnynook, Forrest Hill, Auckland<br>
+      Phone: 021 579 574<br>
+      Email: <a href="mailto:ari1701@yahoo.com" style="color: #ffffff; text-decoration: underline;">ari1701@yahoo.com</a>
+    </p>
+  </footer>
+</body>
+</html>
+ 
